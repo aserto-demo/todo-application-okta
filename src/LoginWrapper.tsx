@@ -5,7 +5,7 @@ import { toRelativeUrl } from "@okta/okta-auth-js";
 
 import TodoService from "./todoService";
 import { useOktaAuth } from "@okta/okta-react";
-import { IAuthUser } from "./interfaces";
+import { AuthUser } from "./interfaces";
 
 export function LoginWrapper() {
   const { oktaAuth, authState } = useOktaAuth();
@@ -24,7 +24,7 @@ export function LoginWrapper() {
   const accessToken = authState.accessToken;
   const token = accessToken?.accessToken as string;
   const claims = authState.idToken?.claims;
-  const user: IAuthUser = {
+  const user: AuthUser = {
     sub: claims?.sub as string,
     email: claims?.email as string,
   };
